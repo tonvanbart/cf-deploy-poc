@@ -27,6 +27,12 @@
 				<groupId>org.cloudfoundry</groupId>
 				<artifactId>cf-maven-plugin</artifactId>
 				<version>1.0.4</version>
+				<configuration>
+					<server>mycloudfoundry-instance</server>
+					<target>http://api.run.pivotal.io</target>
+                    <org>tonvanbart.org</org>
+                    <space>development</space>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
