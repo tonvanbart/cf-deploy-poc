@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.backbase.example</groupId>
-	<artifactId>minesweep-deploy</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <groupId>com.backbase.example</groupId>
+    <artifactId>minesweep-deploy</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-	<name>minesweep</name>
-	<description>CF deployment project</description>
+    <name>minesweep</name>
+    <description>CF deployment project</description>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.backbase.example</groupId>
-				<artifactId>minesweep</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.backbase.example</groupId>
+                <artifactId>minesweep</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.cloudfoundry</groupId>
-				<artifactId>cf-maven-plugin</artifactId>
-				<version>1.0.4</version>
-				<configuration>
-					<server>mycloudfoundry-instance</server>
-					<target>http://api.run.pivotal.io</target>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.cloudfoundry</groupId>
+                <artifactId>cf-maven-plugin</artifactId>
+                <version>1.0.4</version>
+                <configuration>
+                    <server>mycloudfoundry-instance</server>
+                    <target>http://api.run.pivotal.io</target>
                     <org>tonvanbart.org</org>
                     <space>development</space>
                     <appname>minesweep</appname>
                     <path>../service/target/minesweep-0.0.1-SNAPSHOT.war</path>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
