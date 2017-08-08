@@ -32,6 +32,8 @@
 					<target>http://api.run.pivotal.io</target>
                     <org>tonvanbart.org</org>
                     <space>development</space>
+                    <appname>minesweep</appname>
+                    <path>../service/target/minesweep-0.0.1-SNAPSHOT.war</path>
 				</configuration>
 			</plugin>
 		</plugins>
