@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <style type="text/css">
+            body {
+                font-family: sans-serif;
+            }
+        </style>
+        <title>minesweeper sample webservice</title>
+    </head>
+    <body>
+        <h2>minesweeper sample webservice</h2>
+        <p>
+            This is a toy webservice for a hypothetical factory of "minesweeper" games.
+            <br>
+            The idea is that given a minefield, the service creates the hints for it and either returns
+            them directly or stores them for later retrieval.
+        </p>
+        <p>
+            To submit a minefield, POST a payload giving the dimensions of the minefield, followed by
+            the field itself. Empty spaces are marked as '.', mines are marked as '*'.
+            <br>
+            For example the following POST payload:
+            <pre>
+{
+    "height": 5,
+    "width": 4,
+    "minefield" : [
+        "....",
+        ".*..",
+        "....",
+        "..*.",
+        "...."
+    ]
+}
+            </pre>
+        Would yield the following result:
+        <pre>
+[
+    "1110",
+    "1*10",
+    "1221",
+    "01*1",
+    "0111"
+]
+        </pre>
+        </p>
+    </body>
+</html>
