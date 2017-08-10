@@ -18,24 +18,57 @@
                 <groupId>com.backbase.example</groupId>
                 <artifactId>minesweep</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
+                <type>war</type>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <!-- set up global defaults for the cloudfoundry plugin. -->
+                <plugin>
+                    <groupId>org.cloudfoundry</groupId>
+                    <artifactId>cf-maven-plugin</artifactId>
+                    <version>1.0.4</version>
+                    <configuration>
+                        <server>mycloudfoundry-instance</server>
+                        <target>http://api.run.pivotal.io</target>
+                        <org>tonvanbart.org</org>
+                        <space>development</space>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
             <plugin>
                 <groupId>org.cloudfoundry</groupId>
                 <artifactId>cf-maven-plugin</artifactId>
-                <version>1.0.4</version>
-                <configuration>
-                    <server>mycloudfoundry-instance</server>
-                    <target>http://api.run.pivotal.io</target>
-                    <org>tonvanbart.org</org>
-                    <space>development</space>
-                    <appname>minesweep</appname>
-                    <path>../service/target/minesweep-0.0.1-SNAPSHOT.war</path>
-                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <id>deploy-minesweep</id>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                        <configuration>
+                            <appname>minesweep</appname>
+                            <path>../service/target/minesweep-0.0.1-SNAPSHOT.war</path>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <phase>package</phase>
+                        <id>deploy-gs-rest-service</id>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                        <configuration>
+                            <appname>somethingelse</appname>
+                            <path>../service2/target/gs-rest-service-0.1.0.jar</path>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
