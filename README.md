@@ -1,3 +1,3 @@
 ### Clound Foundry POC
 
-Minimal setup of a Spring Boot app and separate CF deployment project.
+Minimal setup of two Spring Boot apps and separate CF deployment project.
