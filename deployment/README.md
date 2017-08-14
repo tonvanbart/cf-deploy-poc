@@ -14,3 +14,10 @@ From Maven 3.3.1 up, it is possible to push one single application by specifying
 ID as follows:
 
     mvn cf:push@minesweep-deploy
+    
+The project uses the Maven dependency plugin to pick up the project to deploy from a local or
+remote repository. To pick up and deploy a fresh copy:
+
+    mvn dependency:copy cf:push@minesweep-deploy
+    
+This requires the demo project to at least be installed in the local M2 repository.
